@@ -9,7 +9,9 @@ import time
 from base64 import b64decode
 from os import remove
 from emo_rec import Emo_Rec
-from EMO.img.result_bg_png import img as bgImg
+from EMO.img.result_bg_png import img as background
+
+QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling)
 
 
 class MyWindow(object):
@@ -32,9 +34,9 @@ class MyWindow(object):
     def setup_ui(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setWindowModality(QtCore.Qt.NonModal)
-        MainWindow.resize(1000, 800)
-        MainWindow.setMinimumSize(QtCore.QSize(1000, 800))
-        MainWindow.setMaximumSize(QtCore.QSize(1000, 800))
+        MainWindow.resize(800, 650)
+        MainWindow.setMinimumSize(QtCore.QSize(800, 650))
+        MainWindow.setMaximumSize(QtCore.QSize(800, 650))
         MainWindow.setToolTip("")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("img/icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -124,8 +126,8 @@ class MyWindow(object):
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.label_title = QtWidgets.QLabel(self.centralwidget)
-        self.label_title.setGeometry(QtCore.QRect(80, 40, 271, 30))
-        self.label_title.setMinimumSize(QtCore.QSize(0, 30))
+        self.label_title.setGeometry(QtCore.QRect(300, 40, 275, 40))
+        # self.label_title.setMinimumSize(QtCore.QSize(0, 30))
         font = QtGui.QFont()
         font.setFamily("黑体")
         font.setPointSize(20)
@@ -134,7 +136,7 @@ class MyWindow(object):
         self.label_title.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignTop)
         self.label_title.setObjectName("label_title")
         self.label_author = QtWidgets.QLabel(self.centralwidget)
-        self.label_author.setGeometry(QtCore.QRect(200, 110, 200, 30))
+        self.label_author.setGeometry(QtCore.QRect(320, 100, 200, 30))
         self.label_author.setMinimumSize(QtCore.QSize(0, 30))
         font = QtGui.QFont()
         font.setFamily("楷书")
@@ -144,7 +146,7 @@ class MyWindow(object):
         self.label_author.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignTop)
         self.label_author.setObjectName("label_author")
         self.label_useTime = QtWidgets.QLabel(self.centralwidget)
-        self.label_useTime.setGeometry(QtCore.QRect(530, 200, 91, 51))
+        self.label_useTime.setGeometry(QtCore.QRect(500, 210, 70, 30))
         font = QtGui.QFont()
         font.setFamily("宋体")
         font.setPointSize(18)
@@ -152,7 +154,7 @@ class MyWindow(object):
         self.label_useTime.setStyleSheet("color: rgb(255, 255, 255);")
         self.label_useTime.setObjectName("label_useTime")
         self.label_scanResult = QtWidgets.QLabel(self.centralwidget)
-        self.label_scanResult.setGeometry(QtCore.QRect(530, 280, 151, 31))
+        self.label_scanResult.setGeometry(QtCore.QRect(500, 280, 70, 30))
         font = QtGui.QFont()
         font.setFamily("宋体")
         font.setPointSize(18)
@@ -160,24 +162,24 @@ class MyWindow(object):
         self.label_scanResult.setStyleSheet("color: rgb(255, 255, 255);")
         self.label_scanResult.setObjectName("label_scanResult")
         self.label_picTime = QtWidgets.QLabel(self.centralwidget)
-        self.label_picTime.setGeometry(QtCore.QRect(480, 200, 38, 38))
+        self.label_picTime.setGeometry(QtCore.QRect(450, 200, 40, 40))
         self.label_picTime.setStyleSheet("border-image: url(img/speed.png);")
         self.label_picTime.setText("")
         self.label_picTime.setObjectName("label_picTime")
         self.label_picResult = QtWidgets.QLabel(self.centralwidget)
-        self.label_picResult.setGeometry(QtCore.QRect(480, 270, 41, 41))
+        self.label_picResult.setGeometry(QtCore.QRect(450, 270, 40, 40))
         self.label_picResult.setStyleSheet("border-image: url(img/result.png);")
         self.label_picResult.setText("")
         self.label_picResult.setObjectName("label_picResult")
         self.line = QtWidgets.QFrame(self.centralwidget)
-        self.line.setGeometry(QtCore.QRect(440, 160, 321, 21))
+        self.line.setGeometry(QtCore.QRect(10, 150, 780, 20))
         self.line.setFrameShape(QtWidgets.QFrame.HLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
         self.label_face = QtWidgets.QLabel(self.centralwidget)
-        self.label_face.setGeometry(QtCore.QRect(10, 360, 420, 280))
-        self.label_face.setMinimumSize(QtCore.QSize(420, 280))
-        self.label_face.setMaximumSize(QtCore.QSize(420, 280))
+        self.label_face.setGeometry(QtCore.QRect(10, 360, 420, 250))
+        self.label_face.setMinimumSize(QtCore.QSize(420, 250))
+        self.label_face.setMaximumSize(QtCore.QSize(420, 250))
         font = QtGui.QFont()
         font.setFamily("楷体")
         font.setPointSize(16)
@@ -250,9 +252,9 @@ class MyWindow(object):
         self.textEdit_pic.setReadOnly(True)
         self.textEdit_pic.setObjectName("textEdit_pic")
         self.toolButton_camera = QtWidgets.QToolButton(self.centralwidget)
-        self.toolButton_camera.setGeometry(QtCore.QRect(10, 240, 50, 45))
-        self.toolButton_camera.setMinimumSize(QtCore.QSize(50, 39))
-        self.toolButton_camera.setMaximumSize(QtCore.QSize(50, 45))
+        self.toolButton_camera.setGeometry(QtCore.QRect(10, 240, 50, 40))
+        self.toolButton_camera.setMinimumSize(QtCore.QSize(50, 40))
+        self.toolButton_camera.setMaximumSize(QtCore.QSize(50, 40))
         self.toolButton_camera.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.toolButton_camera.setAutoFillBackground(False)
         self.toolButton_camera.setStyleSheet("background-color: transparent;")
@@ -260,7 +262,7 @@ class MyWindow(object):
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap("img/camera.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.toolButton_camera.setIcon(icon1)
-        self.toolButton_camera.setIconSize(QtCore.QSize(50, 39))
+        self.toolButton_camera.setIconSize(QtCore.QSize(50, 40))
         self.toolButton_camera.setPopupMode(QtWidgets.QToolButton.DelayedPopup)
         self.toolButton_camera.setToolButtonStyle(QtCore.Qt.ToolButtonTextUnderIcon)
         self.toolButton_camera.setAutoRaise(False)
@@ -284,25 +286,26 @@ class MyWindow(object):
         self.toolButton_model.setArrowType(QtCore.Qt.NoArrow)
         self.toolButton_model.setObjectName("toolButton_model")
         self.label_time = QtWidgets.QLabel(self.centralwidget)
-        self.label_time.setGeometry(QtCore.QRect(610, 206, 90, 31))
+        self.label_time.setGeometry(QtCore.QRect(600, 210, 150, 30))
+        self.label_time.setStyleSheet("color: rgb(255, 255, 255);")
         font = QtGui.QFont()
         font.setPointSize(18)
         self.label_time.setFont(font)
         self.label_time.setObjectName("label_time")
         self.line_2 = QtWidgets.QFrame(self.centralwidget)
-        self.line_2.setGeometry(QtCore.QRect(440, 340, 321, 21))
+        self.line_2.setGeometry(QtCore.QRect(10, 340, 780, 20))
         self.line_2.setFrameShape(QtWidgets.QFrame.HLine)
         self.line_2.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_2.setObjectName("line_2")
         self.label_result = QtWidgets.QLabel(self.centralwidget)
-        self.label_result.setGeometry(QtCore.QRect(680, 278, 120, 31))
+        self.label_result.setGeometry(QtCore.QRect(600, 280, 150, 30))
         font = QtGui.QFont()
         font.setPointSize(16)
         self.label_result.setFont(font)
         self.label_result.setStyleSheet("color: rgb(255, 255, 255);")
         self.label_result.setObjectName("label_result")
         self.label_outputResult = QtWidgets.QLabel(self.centralwidget)
-        self.label_outputResult.setGeometry(QtCore.QRect(450, 380, 300, 250))
+        self.label_outputResult.setGeometry(QtCore.QRect(450, 360, 340, 250))
         self.label_outputResult.setText("")
         self.label_outputResult.setObjectName("label_outputResult")
         MainWindow.setCentralWidget(self.centralwidget)
@@ -323,13 +326,13 @@ class MyWindow(object):
         self.label_author.setText(_translate("MainWindow", "徐志文 王昊天"))
         self.label_useTime.setText(_translate("MainWindow", "<html><head/><body><p>用时：</p></body></html>"))
         self.label_scanResult.setText(
-            _translate("MainWindow", "<html><head/><body><p>识别结果：<br/></p></body></html>"))
+            _translate("MainWindow", "<html><head/><body><p>结果：<br/></p></body></html>"))
         self.label_face.setText(
             _translate("MainWindow", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
 
         self.textEdit_model.setHtml(_translate("MainWindow", "<html><head/><body><p>选择模型<br/></p></body></html>"))
         self.textEdit_camera.setHtml(
-            _translate("MainWindow", "<html><head/><body><p>实时摄像未开启<br/></p></body></html>"))
+            _translate("MainWindow", "<html><head/><body><p>实时情绪识别未开启<br/></p></body></html>"))
         self.textEdit_pic.setHtml(_translate("MainWindow", "<html><head/><body><p>选择图片<br/></p></body></html>"))
         self.label_result.setText(_translate("MainWindow", "暂无"))
         self.actionGoogle_Translate.setText(_translate("MainWindow", "Google Translate"))
@@ -347,16 +350,16 @@ class MyWindow(object):
             flag = self.cap.open(self.CAM_NUM)  # 检查相机状态
             if flag == False:  # 相机打开失败提示
                 msg = QtWidgets.QMessageBox.warning(self.centralwidget, u"Warning",
-                                                        u"请检测相机与电脑是否连接正确！ ",
+                                                        u"请检测摄像头与电脑是否正确连接",
                                                         buttons=QtWidgets.QMessageBox.Ok,
                                                         defaultButton=QtWidgets.QMessageBox.Ok)
 
             else:
                 # 准备运行识别程序
-                self.textEdit_pic.setText('文件未选中')
+                self.textEdit_pic.setText('未选中图片')
                 QtWidgets.QApplication.processEvents()
-                self.textEdit_camera.setText('实时摄像已开启')
-                self.label_face.setText('正在启动识别系统...\n\nleading')
+                self.textEdit_camera.setText('实时识别已开启')
+                self.label_face.setText('system loading...\n\nleading')
                 # 新建对象
                 self.emotion_model = Emo_Rec(self.model_path)
                 QtWidgets.QApplication.processEvents()
@@ -367,8 +370,8 @@ class MyWindow(object):
             self.timer_camera.stop()
             self.cap.release()
             self.label_face.clear()
-            self.textEdit_camera.setText('实时摄像已关闭')
-            self.textEdit_pic.setText('文件未选中')
+            self.textEdit_camera.setText('实时识别已关闭')
+            self.textEdit_pic.setText('图片未选中')
             gif = QMovie('img/scan.gif')
             self.label_face.setMovie(gif)
             gif.start()
@@ -383,7 +386,7 @@ class MyWindow(object):
         self.image = cv2.flip(self.image, 1)  # 左右翻转
 
         tmp = open('result_bg.png', 'wb')
-        tmp.write(b64decode(bgImg))
+        tmp.write(b64decode(background))
         tmp.close()
         canvas = cv2.imread('result_bg.png')  # 用于数据显示的背景图片 #todo
         remove('result_bg.png') #todo
@@ -420,7 +423,7 @@ class MyWindow(object):
             self.emotion_model = Emo_Rec(self.model_path)
             # 读取背景图
             tmp = open('result_bg.png', 'wb')
-            tmp.write(b64decode(bgImg))
+            tmp.write(b64decode(background))
             tmp.close()
             canvas = cv2.imread('result_bg.png')
             remove('result_bg.png')
