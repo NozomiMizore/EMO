@@ -9,8 +9,8 @@ from keras.callbacks import ReduceLROnPlateau
 from keras.preprocessing.image import ImageDataGenerator
 from load_process import load_dataset
 from load_process import process_data
-from model.cnn import mini_XCEPTION
-from model.cnn import simpler_CNN
+from trained_model.cnn import mini_XCEPTION
+from trained_model.cnn import simpler_CNN
 from sklearn.model_selection import train_test_split
 
 # 参数
@@ -21,7 +21,7 @@ validation_split = .2
 verbose = 1
 num_classes = 7
 patience = 50
-base_path = 'model/'
+base_path = 'trained_model/'
 
 # 构建模型
 model = mini_XCEPTION(input_shape, num_classes)

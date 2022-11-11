@@ -9,9 +9,9 @@ from PyQt5 import QtGui, QtWidgets
 
 class Emo_Rec:
     def __init__(self, model_path=None):
-        detection_model_path = 'haarcascade_files/haarcascade_frontalface_default.xml'
+        detection_model_path = 'haarcascade/haarcascade_frontalface_default.xml'
         if model_path is None:
-            emotion_model_path = 'model/CNN.98-0.62.hdf5'
+            emotion_model_path = 'trained_model/CNN.98-0.62.hdf5'
         else:
             emotion_model_path = model_path
 

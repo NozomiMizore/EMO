@@ -100,7 +100,7 @@ def simpler_CNN(input_shape, num_classes):
                             strides=(2, 2), padding='same'))
 
     model.add(Flatten())
-    #model.add(GlobalAveragePooling2D())
+    #trained_model.add(GlobalAveragePooling2D())
     model.add(Activation('softmax',name='predictions'))
     return model
 
@@ -343,11 +343,11 @@ def big_XCEPTION(input_shape, num_classes):
 if __name__ == "__main__":
     input_shape = (64, 64, 1)
     num_classes = 7
-    #model = tiny_XCEPTION(input_shape, num_classes)
-    #model.summary()
-    #model = mini_XCEPTION(input_shape, num_classes)
-    #model.summary()
-    #model = big_XCEPTION(input_shape, num_classes)
-    #model.summary()
+    #trained_model = tiny_XCEPTION(input_shape, num_classes)
+    #trained_model.summary()
+    #trained_model = mini_XCEPTION(input_shape, num_classes)
+    #trained_model.summary()
+    #trained_model = big_XCEPTION(input_shape, num_classes)
+    #trained_model.summary()
     model = simple_CNN((48, 48, 1), num_classes)
     model.summary()
