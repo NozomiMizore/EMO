@@ -277,7 +277,7 @@ class MyWindow(object):
         self.toolButton_model.setStyleSheet("background-color: transparent;")
         self.toolButton_model.setText("")
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("img/trained_model.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap("img/model.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.toolButton_model.setIcon(icon2)
         self.toolButton_model.setIconSize(QtCore.QSize(40, 40))
         self.toolButton_model.setPopupMode(QtWidgets.QToolButton.DelayedPopup)
